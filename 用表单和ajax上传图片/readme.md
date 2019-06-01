@@ -1,4 +1,4 @@
-## 描述ajax上传图片过程
+## 解析ajax上传图片
 - mkdir ajax-img， touch index.js(名字自定义)
 - npm  i express multer cors(自动生成json文件)
 - index.js中输入以下代码
@@ -20,6 +20,9 @@ app.listen(3000) //端口
 ```
 upload是路径，可自定义，imgNewName是图片名，非原名，yyy代表将请求到的图片放到yyy文件夹。可自定义。这样就能获取用户上传的图片。这一串字符就是用户上传的图片。
 - 请求这个协议，就得到“看我”这个响应，可用jsbin等试一下。
+#### 总结过程：
+使用FormData收集fileInput第一个files，发送ajax请求~到upload，得到response，前面加上preview前缀，加上127这个协议，放到img的src上，这样就能预览上传的图片。
+
 ## 爱心提示：
 在我安装这三个工具的时候出现这样的提示，开始我以为是报错，就搜搜，最后发现这样的解释：大概是说，它们是Mac专属，Window和Linux安装就会这样提示，其实你已经安装成功，表害怕。
 ```

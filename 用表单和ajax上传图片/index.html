@@ -4,12 +4,37 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>表单上传图片</title>
+	<title>表单和ajax上传图片</title>
 </head>
 <body>
+	<!-- 表单上传-->
+	<!--
+		<form action="http://127.0.0.1:3000/upload" method="post" enctype="multipart/form-data">
+		  <input type="file" name="xxx">
+		  <input type="submit" value="提交">
+	  </form>
+  -->
+
+  <!-- ajax上传 -->
 	<form action="http://127.0.0.1:3000/upload" method="post" enctype="multipart/form-data">
 		<input type="file" name="xxx">
 		<input type="submit" value="提交">
 	</form>
+
+	<script>
+	  f.addEventListener('submit', (e)=>{
+			e.preventDefault()
+			var formData = new FormData()
+			var fileInput = document.querySelector('input[name="xxx"]')
+			formData.append("xxx", fileInput.files[0])
+			
+			var xhr = new XMLHttpRequest()
+			xhr.open('POST', f.action)
+			xhr.onload = function(){
+				img.src = `http://127.0.0.1:3000/preview/${xhr.response}`
+			}
+			xhr.send(formData)
+		})
+	</script>
 </body>
 </html>
