@@ -10,10 +10,11 @@ app.get('/', (req,res)=>{
 })
 
 app.post('/upload', upload.single('xxx'), (req,res)=>{
-	res.set( 'Access-Control-Allow-Origin', 'http://null.jsbin.com')
+	res.set( 'Access-Control-Allow-Origin', '*')
 	res.send(req.file.filename)
 })
-app.get('preview/:key', (req, res)=>{
+
+app.get('/preview/:key', (req, res)=>{
 	res.sendFile(`yyy/${req.params.key}`,{
 		root: __dirname,
 		headers:{
@@ -24,4 +25,5 @@ app.get('preview/:key', (req, res)=>{
 		console.log(error)
   })
 })
+
 app.listen(3000)
