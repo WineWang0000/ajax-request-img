@@ -2,8 +2,8 @@ const express = require('express')
 const multer = require('multer')
 const upload = multer({dest: 'yyy'})
 
-
 const app = express()
+app.options('./upload', cors())
 
 app.get('/', (req,res)=>{
 	res.send('hello')
@@ -25,5 +25,5 @@ app.get('/preview/:key', (req, res)=>{
 		console.log(error)
   })
 })
-
-app.listen(3000)
+var post = process.env.PORT || 3000
+app.listen(post)
